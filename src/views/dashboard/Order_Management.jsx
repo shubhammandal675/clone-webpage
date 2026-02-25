@@ -120,6 +120,7 @@ const Order_Management = () => {
           </Button>
         </Box>
 
+
         {/* Table Section */}
         <TableContainer sx={{ border: '1px solid #f0f2f5', borderRadius: '12px' }}>
           <Table>
@@ -128,15 +129,8 @@ const Order_Management = () => {
                 {['ID', 'Product', 'Quantity', 'Price', 'Delivery Type', 'Status', 'Action'].map((text) => (
                   <TableCell
                     key={text}
-                    align={text === 'Product' ? 'left' : 'center'}
-                    sx={{
-                      fontWeight: 600,
-                      color: '#8e98a8',
-                      fontSize: '0.75rem',
-                      
-                      fontFamily: outfitFont,
-                      // lineHeight: '1.2rem'
-                    }}
+                    align={text === 'ID' || text === 'Product' ? 'left' : 'center'}
+                    sx={{ fontWeight: 600, color: '#8e98a8', fontSize: '0.75rem', py: 2, px: 2, fontFamily: outfitFont }}
                   >
                     {text.toUpperCase()}
                   </TableCell>
@@ -146,32 +140,27 @@ const Order_Management = () => {
             <TableBody>
               {filteredData.map((row) => (
                 <TableRow key={row.id} hover>
-                  <TableCell align="center" sx={{
-                    padding: '14px 16px', // Ekdum choti padding
-                    fontSize: '0.8rem',
-                    fontFamily: outfitFont,
-                    color: '#666'
-                  }}>
+                  <TableCell align="left" sx={{ padding: '12px 16px', fontSize: '0.85rem', fontFamily: outfitFont, color: '#666' }}>
                     {row.id}
                   </TableCell>
-                  <TableCell align="left" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontFamily: outfitFont }}>
+                  <TableCell align="left" sx={{ padding: '12px 16px', fontSize: '0.85rem', fontFamily: outfitFont, fontWeight: 500 }}>
                     {row.product}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontFamily: outfitFont }}>
+                  <TableCell align="center" sx={{ padding: '12px 16px', fontSize: '0.85rem', fontFamily: outfitFont }}>
                     {row.quantity}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontFamily: outfitFont }}>
+                  <TableCell align="center" sx={{ padding: '12px 16px', fontSize: '0.85rem', fontFamily: outfitFont }}>
                     {row.price}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontFamily: outfitFont }}>
+                  <TableCell align="center" sx={{ padding: '12px 16px', fontSize: '0.85rem', fontFamily: outfitFont }}>
                     {row.deliveryType}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontWeight: 500, fontFamily: outfitFont }}>
+                  <TableCell align="center" sx={{ padding: '12px 16px', fontSize: '0.85rem',  fontFamily: outfitFont, }}>
                     {row.status}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '2px 8px' }}>
-                    <IconButton size="small" sx={{ p: '2px', color: '#8e98a8' }}>
-                      <i className="ri-eye-line" style={{ fontSize: '0.9rem' }} />
+                  <TableCell align="center" sx={{ padding: '12px 16px' }}>
+                    <IconButton size="small" sx={{ color: '#8e98a8' }}>
+                      <i className="ri-eye-line" style={{ fontSize: '1.1rem' }} />
                     </IconButton>
                   </TableCell>
                 </TableRow>

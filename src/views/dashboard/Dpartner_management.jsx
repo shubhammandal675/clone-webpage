@@ -134,7 +134,7 @@ const Dpartner_Management = () => {
 
 
                   {/* Toggle Switch */}
-                  <TableCell align="center" sx={{ border: 'none' }}>
+                  <TableCell align="center" >
                     <IconButton
                       disableRipple
                       sx={{

@@ -7,17 +7,72 @@ import {
   TextField, MenuItem, Select, Button, InputAdornment
 } from '@mui/material'
 
-const Delievery_Management = () => {
+const Delivery_Management = () => {
   // Common Font Style
   const outfitFont = "'Outfit', 'Outfit Fallback', sans-serif";
 
-  const [orders, setOrders] = useState([
-    { id: 'ER101', product: 'Sofa', quantity: 10, price: '$2399', deliveryType: 'SELF', status: 'Placed' },
-    { id: 'ER102', product: 'Chair', quantity: 10, price: '$2399', deliveryType: 'SELF', status: 'Placed' },
-    { id: 'ER103', product: 'Sofa', quantity: 10, price: '$2399', deliveryType: 'SELF', status: 'Placed' },
-    { id: 'ER104', product: 'Table', quantity: 10, price: '$2399', deliveryType: 'SELF', status: 'Placed' },
-    { id: 'ER105', product: 'Sofa', quantity: 10, price: '$2399', deliveryType: 'SELF', status: 'Placed' },
-  ]);
+const [orders, setOrders] = useState([
+  { 
+    id: 'ER101', 
+    product: 'Premium Sofa', 
+    quantity: 5, 
+    price: '$2400', 
+    deliveryPartner: 'Arjun Singh', 
+    estimatedDate: '12 Jan, 2025', 
+    status: 'Placed' ,
+    action:'Assign Delivery Partner',
+  },
+  { 
+    id: 'ER102', 
+    product: 'Office Chair', 
+    quantity: 10, 
+    price: '$1200', 
+    deliveryPartner: 'Vikram Mehta', 
+    estimatedDate: '14 Jan, 2025', 
+    status: 'Placed' ,
+    action:'Assign Delivery Partner',
+  },
+  { 
+    id: 'ER103', 
+    product: 'Dining Table', 
+    quantity: 2, 
+    price: '$1500', 
+    deliveryPartner: 'Rohan Sharma', 
+    estimatedDate: '15 Jan, 2025', 
+    status: 'Placed' ,
+    action:'Assign Delivery Partner',
+  },
+  { 
+    id: 'ER104', 
+    product: 'King Size Bed', 
+    quantity: 1, 
+    price: '$3500', 
+    deliveryPartner: 'Amit Verma', 
+    estimatedDate: '18 Jan, 2025', 
+    status: 'Placed' ,
+    action:'Assign Delivery Partner',
+  },
+  { 
+    id: 'ER105', 
+    product: 'Study Desk', 
+    quantity: 4, 
+    price: '$800', 
+    deliveryPartner: 'Sameer Khan', 
+    estimatedDate: '20 Jan, 2025', 
+    status: 'Placed',
+    action:'Assign Delivery Partner', 
+  },
+  { 
+    id: 'ER106', 
+    product: 'Outdoor Swing', 
+    quantity: 3, 
+    price: '$1100', 
+    deliveryPartner: 'Sunny Gill', 
+    estimatedDate: '22 Jan, 2025', 
+    status: 'Placed' ,
+    action:'Assign Delivery Partner',
+  },
+]);
 
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
@@ -54,7 +109,7 @@ const Delievery_Management = () => {
             color: '#000',
             fontFamily: outfitFont
           }}>
-            Delievery Management
+            Order Management
           </Typography>
           <Button
             variant="contained"
@@ -120,25 +175,19 @@ const Delievery_Management = () => {
           </Button>
         </Box>
 
+
         {/* Table Section */}
         <TableContainer sx={{ border: '1px solid #f0f2f5', borderRadius: '12px' }}>
           <Table>
             <TableHead sx={{ backgroundColor: '#fafbfd' }}>
-              <TableRow>
-                {['ID', 'Product', 'Quantity', 'Price', 'Delivery Type', 'Status', 'Action'].map((text) => (
+              <TableRow align="center" >
+                {['ID', 'Product', 'Quantity', 'Price', 'Delivery Partner', 'Estimated Date' ,'Status', 'Action'].map((text) => (
                   <TableCell
                     key={text}
-                    align={text === 'Product' ? 'left' : 'center'}
-                    sx={{
-                      fontWeight: 600,
-                      color: '#8e98a8',
-                      fontSize: '0.75rem',
-                      
-                      fontFamily: outfitFont,
-                      // lineHeight: '1.2rem'
-                    }}
+                    align={text === 'ID' || text === 'Product' ? 'left' : 'center'}
+                    sx={{ fontWeight: 600, color: '#8e98a8', fontSize: '0.75rem', fontFamily: outfitFont }}
                   >
-                    {text.toUpperCase()}
+                    {text}
                   </TableCell>
                 ))}
               </TableRow>
@@ -146,33 +195,32 @@ const Delievery_Management = () => {
             <TableBody>
               {filteredData.map((row) => (
                 <TableRow key={row.id} hover>
-                  <TableCell align="center" sx={{
-                    padding: '14px 16px', // Ekdum choti padding
-                    fontSize: '0.8rem',
-                    fontFamily: outfitFont,
-                    color: '#666'
-                  }}>
+                  <TableCell align="left" sx={{ fontSize: '0.85rem', fontFamily: outfitFont, color: '#666' }}>
                     {row.id}
                   </TableCell>
-                  <TableCell align="left" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontFamily: outfitFont }}>
+                  <TableCell align="left" sx={{  fontSize: '0.85rem', fontFamily: outfitFont, fontWeight: 500 }}>
                     {row.product}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontFamily: outfitFont }}>
+                  <TableCell align="center" sx={{ fontSize: '0.85rem', fontFamily: outfitFont }}>
                     {row.quantity}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontFamily: outfitFont }}>
+                  <TableCell align="center" sx={{  fontSize: '0.85rem', fontFamily: outfitFont }}>
                     {row.price}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontFamily: outfitFont }}>
-                    {row.deliveryType}
+                  <TableCell align="left" sx={{  fontSize: '0.85rem', fontFamily: outfitFont }}>
+                    {row.deliveryPartner}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '4px 8px', fontSize: '0.8rem', fontWeight: 500, fontFamily: outfitFont }}>
+                  <TableCell align="left" sx={{  fontSize: '0.85rem', fontFamily: outfitFont }}>
+                    {row.estimatedDate}
+                  </TableCell>
+                  <TableCell align="center" sx={{  fontSize: '0.85rem',  fontFamily: outfitFont, }}>
                     {row.status}
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: '2px 8px' }}>
-                    <IconButton size="small" sx={{ p: '2px', color: '#8e98a8' }}>
-                      <i className="ri-eye-line" style={{ fontSize: '0.9rem' }} />
+                  <TableCell align="center">
+                    <IconButton size="small" sx={{ color: '#8e98a8' }}>
+                      <i className="ri-eye-line" style={{ fontSize: '1.1rem' }}/>                    
                     </IconButton>
+                    <span  sx={{  fontSize: '0.85rem',  fontFamily: outfitFont, }}>{row.action}</span>  
                   </TableCell>
                 </TableRow>
               ))}
@@ -232,4 +280,4 @@ const Delievery_Management = () => {
   )
 }
 
-export default Delievery_Management
+export default Delivery_Management

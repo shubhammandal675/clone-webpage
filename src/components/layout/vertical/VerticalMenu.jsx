@@ -108,12 +108,28 @@ const VerticalMenu = ({ scrollMenu }) => {
            >
            Order Management </MenuItem> 
 
-          <MenuItem href='/delievery'
-            active={isSelected('/delievery')}
-            icon={<i className='ri-ship-2-line' />}
-          > Delievery Management </MenuItem>
+          <MenuItem href='/delivery'
+            active={isSelected('/delivery')}
+            icon={<i className='ri-route-line' />}
+          > Delivery Management </MenuItem>
 
-          {/* ... baki items ... */}
+          <MenuItem href='/rating'
+            active={isSelected('/rating')}
+         icon={<i className='ri-account-circle-line' />}
+          > Ratings Management </MenuItem>
+
+          <MenuItem href='/payment'
+            active={isSelected('/payment')}
+         icon={<i className='ri-account-circle-line' />}
+          > Payment Management </MenuItem>
+
+        <MenuItem href='/dispute'
+            active={isSelected('/dispute')}
+         icon={<i className='ri-file-warning-line' />}
+          > Dispute Management </MenuItem>
+
+
+          {/* ... more items ... */}
 
           <SubMenu label='Cms Management'
             icon={<i className='ri-pages-line' />}

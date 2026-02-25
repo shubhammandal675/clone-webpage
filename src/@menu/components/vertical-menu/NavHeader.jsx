@@ -14,6 +14,7 @@ const StyledNavHeader = styled.div`
   position: sticky;
   top: 0;
   z-index: 10;
+ background-color: rgb(3 77 79);
  
    
 /* Matches your white sidebar background */
